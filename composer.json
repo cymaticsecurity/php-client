@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "classmap": [
+      "Client.php",
+      "Cache.php"
+    ]
+  },
+  "require": {
+    "ext-apcu": "*",
+    "ext-curl": "*",
+    "ext-json": "*"
+  }
+}
