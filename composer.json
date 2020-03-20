@@ -1,4 +1,8 @@
 {
+  "name": "cymaticsecurity/php-client",
+  "description": "Cymatic Security PHP Client",
+  "version": "1.0.0",
+  "license": "MIT",
   "autoload": {
     "classmap": [
       "Client.php",
@@ -6,8 +10,6 @@
     ]
   },
   "require": {
-    "ext-apcu": "*",
-    "ext-curl": "*",
-    "ext-json": "*"
+
   }
 }
