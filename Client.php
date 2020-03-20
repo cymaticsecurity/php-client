@@ -220,7 +220,7 @@ class Client
     protected function getCachedToken()
     {
         if ($this->cache) {
-            return $this->cache{$this->tokenCacheKey . str_replace('-', '_', $this->clientId)};
+            return $this->cache->{$this->tokenCacheKey . str_replace('-', '_', $this->clientId)};
         }
         return '';
     }
@@ -239,7 +239,7 @@ class Client
             throw new \Exception("Token is required");
         }
         if ($this->cache) {
-            $this->cache{$this->tokenCacheKey . str_replace('-', '_', $this->clientId)} = $token;
+            $this->cache->{$this->tokenCacheKey . str_replace('-', '_', $this->clientId)} = $token;
         }
     }
 
