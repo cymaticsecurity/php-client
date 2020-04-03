@@ -64,8 +64,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 Use library from namespace:
 
 ```php
-use CymaticSecurity\Client;
-use CymaticSecurity\Cache;
+use Cymatic\Client;
+use Cymatic\Cache;
 ```
 
 Instantiate client:
@@ -268,7 +268,6 @@ To close a session for user against Cymatic the requirements are:
  - `Access JWT token` on the header as `Authorization Bearer` 
  - `Content-Type` as `application/json` on the header
  - `c_uuid` from the user attempting to log in
- - `Identity JWT` from the Browser on the body payload
 
 #### Abstract example
 
@@ -287,7 +286,7 @@ POST https://api.cymaticsecurity.com/logout
 ```
 {
   "c_uuid": "Id provided by cymatic",
-  "jwt": "JWT.from.Browser"
+  "session_id": "Session ID"
 }
 ```
 
@@ -295,7 +294,7 @@ POST https://api.cymaticsecurity.com/logout
 
 ```php
 $session_id = $login['session_id'];
-$client->logout($sdkJWT, $session_id, $c_uuid);
+$client->logout($session_id, $c_uuid);
 ```
 
 # LICENCE
@@ -304,4 +303,4 @@ MIT
 
 # Author
 
-Cymatic Security Team
+© Cymatic Team

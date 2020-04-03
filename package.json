@@ -1,0 +1,35 @@
+{
+  "name": "cymatic-php-client",
+  "version": "1.0.0",
+  "devDependencies": {
+    "auto-changelog": "1.16.3",
+    "husky": "^4.2.3",
+    "cross-env": "^7.0.2"
+  },
+  "scripts": {
+    "add-commit": "git commit --amend --no-verify --no-edit",
+    "patch-version": "node ./bin/version.js",
+    "changelog": "auto-changelog --template templates/template.hbs -p -u --commit-limit false --output CHANGELOG.md",
+    "changelog-debug": "auto-changelog --template templates/template.hbs -p --template json --output changelog.json"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "cross-env HUSKY_SKIP_HOOKS=1 echo 'Generating CHANGELOG.md' && yarn patch-version && yarn changelog && git add CHANGELOG.md && git add package.json && yarn add-commit"
+    }
+  },
+  "auto-changelog": {
+    "includeBranch": [
+      "master"
+    ],
+    "commitLimit": false,
+    "unreleased": true,
+    "sortCommits": "date",
+    "issueUrl": "https://github.com/cymaticsecurity/php-client/commit/{id}",
+    "replaceText": {
+      "[Ff]eature:": "",
+      "[Ff]ix:": "",
+      "[Bb]reak:": "",
+      "^ #(.{6})\\s": "[$1](https://github.com/cymaticsecurity/php-client/commit/$1) - "
+    }
+  }
+}

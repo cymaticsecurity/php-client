@@ -1,7 +1,7 @@
 <?php
 
 
-namespace CymaticSecurity;
+namespace Cymatic;
 
 
 class Cache

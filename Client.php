@@ -1,20 +1,24 @@
 <?php
 
-namespace CymaticSecurity;
+namespace Cymatic;
 
 /**
- * Minimal standalone library to work with Cymatic Security
+ * Minimal standalone library to work with Cymatic
  * Register to get your credentials here: https://cymatic.io
  *
  * @license PRIVATE
  * @url https://cymatic.io
- * @author Cymatic Security
- * @package CymaticSecurity
- * @copyright Cymatic Security
- * @version 1.0
+ * @author Cymatic
+ * @package Cymatic
+ * @copyright Cymatic
  */
 class Client
 {
+    /**
+     * @var string
+     */
+    public static $version = '1.0.0';
+
     /**
      * @var int
      */
@@ -32,7 +36,7 @@ class Client
     /**
      * @var string
      */
-    protected $userAgent = 'CymaticSecurity\Client v1.0';
+    protected $userAgent = 'Cymatic\Client {{version}}';
 
     /**
      * Cloud Instance Name
@@ -101,6 +105,13 @@ class Client
         $this->tenant = $tenant;
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
+    }
+
+    /**
+     * @return string|string[]
+     */
+    public function getUserAgent() {
+        return str_replace('{{version}}', Client::$version, $this->userAgent);
     }
 
     /**
@@ -412,20 +423,16 @@ class Client
      * Method: POST
      * URL: https://{{API URL}}/logout
      * Headers: ["Authorization": "Bearer " + access_token]
-     * Body: {"jwt": jwt_from_sdk, "session_id": session_id }
+     * Body: {"c_uuid": c_uuid, "session_id": session_id }
      *
-     * @param $sdkJWT
      * @param $session_id
      * @param $c_uuid
      * @return array|string
      * @throws \Exception
      */
-    public function logout($sdkJWT, $session_id, $c_uuid)
+    public function logout($session_id, $c_uuid)
     {
         try {
-            if (!$sdkJWT) {
-                throw new \Exception("SDK JWT should be provided");
-            }
             if (!$c_uuid) {
                 throw new \Exception("c_uuid should be provided");
             }
@@ -433,7 +440,6 @@ class Client
                 throw new \Exception("session_id should be provided");
             }
             $body = array(
-                "jwt" => $sdkJWT,
                 "c_uuid" => $c_uuid,
                 "session_id" => $session_id
             );
@@ -508,7 +514,7 @@ class Client
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->requestTimeout);
             curl_setopt($ch, CURLOPT_TIMEOUT, $this->requestTimeout);
-            curl_setopt($ch, CURLOPT_USERAGENT, $this->userAgent);
+            curl_setopt($ch, CURLOPT_USERAGENT, $this->getUserAgent());
             $response = curl_exec($ch);
 
             if (curl_errno($ch)) {
