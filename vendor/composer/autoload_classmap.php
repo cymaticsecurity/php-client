@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CymaticSecurity\\Cache' => $baseDir . '/Cache.php',
-    'CymaticSecurity\\Client' => $baseDir . '/Client.php',
+    'Cymatic\\Cache' => $baseDir . '/Cache.php',
+    'Cymatic\\Client' => $baseDir . '/Client.php',
 );

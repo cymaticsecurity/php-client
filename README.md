@@ -49,8 +49,14 @@ You can use caching library of your choice:
 
 Run installation in your project folder:
 
-```sh
+```shell script
 php composer.phar install
+```
+
+When developing client and classes structure changed - don't forget to:
+
+```shell script
+php composer.phar dump-autoload
 ```
 
 ## Usage

@@ -6,7 +6,7 @@ namespace Cymatic;
  * Minimal standalone library to work with Cymatic
  * Register to get your credentials here: https://cymatic.io
  *
- * @license PRIVATE
+ * @license MIT
  * @url https://cymatic.io
  * @author Cymatic
  * @package Cymatic
@@ -295,8 +295,8 @@ class Client
                 return $response->access_token;
             }
             throw new \Exception("Token is empty in SSO response: " . json_encode($response));
-        } catch (\Exception $e) {
-            throw new \Exception("Retrieve token error: " . $e->getMessage());
+        } catch (\Exception $exception) {
+            throw new \Exception("Retrieve token error: " . $exception->getMessage());
         }
     }
 
@@ -334,8 +334,8 @@ class Client
                 'responseCode' => Client::$HTTP_RESPONSE_CODE_CREATED
             );
             return $this->request('register', $body, $headers, $options);
-        } catch (\Exception $registerException) {
-            throw new \Exception("Registration error: " . $registerException->getMessage());
+        } catch (\Exception $exception) {
+            throw new \Exception("Registration error: " . $exception->getMessage());
         }
     }
 
@@ -373,8 +373,8 @@ class Client
                 'responseCode' => Client::$HTTP_RESPONSE_CODE_CREATED
             );
             return $this->request('verify', $body, $headers, $options);
-        } catch (\Exception $verifyException) {
-            throw new \Exception("Verification error: " . $verifyException->getMessage());
+        } catch (\Exception $exception) {
+            throw new \Exception("Verification error: " . $exception->getMessage());
         }
     }
 
@@ -412,8 +412,8 @@ class Client
                 'responseCode' => Client::$HTTP_RESPONSE_CODE_OK
             );
             return $this->request('login', $body, $headers, $options);
-        } catch (\Exception $verifyException) {
-            throw new \Exception("Login error: " . $verifyException->getMessage());
+        } catch (\Exception $exception) {
+            throw new \Exception("Login error: " . $exception->getMessage());
         }
     }
 
@@ -451,8 +451,8 @@ class Client
                 'responseCode' => Client::$HTTP_RESPONSE_CODE_OK
             );
             return $this->request('logout', $body, $headers, $options);
-        } catch (\Exception $verifyException) {
-            throw new \Exception("Logout error: " . $verifyException->getMessage());
+        } catch (\Exception $exception) {
+            throw new \Exception("Logout error: " . $exception->getMessage());
         }
     }
 

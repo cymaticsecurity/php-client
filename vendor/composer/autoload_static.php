@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit6872a0801bcf1d5cf4109834f738cdd4
 {
     public static $classMap = array (
-        'CymaticSecurity\\Cache' => __DIR__ . '/../..' . '/Cache.php',
-        'CymaticSecurity\\Client' => __DIR__ . '/../..' . '/Client.php',
+        'Cymatic\\Cache' => __DIR__ . '/../..' . '/Cache.php',
+        'Cymatic\\Client' => __DIR__ . '/../..' . '/Client.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
