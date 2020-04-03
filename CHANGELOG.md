@@ -5,9 +5,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 1.0.0 - 2020-04-03
 
+#### Features
+
+*  auto changelog ([`1e8148d`](https://github.com/cymaticsecurity/php-client/commit/1e8148d97b845679724afb8ec07e7638f993589a))
+
 #### Fixes
 
-*  Namespace logout API ([`9ab6fc2`](https://github.com/cymaticsecurity/php-client/commit/9ab6fc2f77bf4df8c7d0041ce80a7687cef973d5))
+*  Namespace logout API ([`3ddb44c`](https://github.com/cymaticsecurity/php-client/commit/3ddb44c25d115cf4e0363a0112bb4506dd865b80))
 
 #### Other Commits
 

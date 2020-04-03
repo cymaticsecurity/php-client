@@ -1,2 +1,5 @@
 .idea
-composer.lock
+*.lock
+changelog.json
+node_modules
+*.log
